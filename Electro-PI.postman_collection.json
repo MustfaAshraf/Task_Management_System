@@ -1,0 +1,592 @@
+{
+  "info": {
+    "_postman_id": "0b109dd1-8f60-4ec9-be9b-c89b8bf14d0d",
+    "name": "Electro-PI",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "38801866",
+    "_collection_link": "https://go.postman.co/collection/38801866-0b109dd1-8f60-4ec9-be9b-c89b8bf14d0d?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "register",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Mustafa\",\r\n    \"email\": \"mustafa@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"member@test.com\",\r\n    \"password\": \"password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost/auth/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Projects",
+      "item": [
+        {
+          "name": "all-projects",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2NhMWRiMWE0MjEwNTBkNmI3ZWJjNSIsInJvbGUiOiJNZW1iZXIiLCJpYXQiOjE3ODIzNTk0OTksImV4cCI6MTc4MjM2MDM5OX0.DsztKmRU53FXI_YHtxUUmyHgFNh7LKPJwfg_3GAdhs8",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost/projects",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "projects"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "all-projects (paginated)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2NhMWRiMWE0MjEwNTBkNmI3ZWJjNSIsInJvbGUiOiJNZW1iZXIiLCJpYXQiOjE3ODIzNTg1MDYsImV4cCI6MTc4MjM1OTQwNn0.MFym_i3Zuc2Xths0zeJkQdqP2VbwxPP9Xdus8vCS0O4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost/projects?page=1&limit=1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "projects"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "all-projects (Sorted)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2NhMWRiMWE0MjEwNTBkNmI3ZWJjNSIsInJvbGUiOiJNZW1iZXIiLCJpYXQiOjE3ODIzNTg1MDYsImV4cCI6MTc4MjM1OTQwNn0.MFym_i3Zuc2Xths0zeJkQdqP2VbwxPP9Xdus8vCS0O4",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost/projects?sort=-createdAt",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "projects"
+              ],
+              "query": [
+                {
+                  "key": "sort",
+                  "value": "-createdAt"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "all-projects (Filtered)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2NhMWRiMWE0MjEwNTBkNmI3ZWJjNSIsInJvbGUiOiJNZW1iZXIiLCJpYXQiOjE3ODIzNTk0OTksImV4cCI6MTc4MjM2MDM5OX0.DsztKmRU53FXI_YHtxUUmyHgFNh7LKPJwfg_3GAdhs8",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost/projects?status=Archived",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "projects"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "Archived"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "one-project",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2M2ODQwNGM1OTBmZmViYzJkMzM1MCIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc4MjM0Mzc1MywiZXhwIjoxNzgyMzQ0NjUzfQ.-Ws1sNmtbIQvoUvPRwsGCumpps4G_AFyPQrAibg3174",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost/projects/6a3c68404c590ffebc2d3352",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "projects",
+                "6a3c68404c590ffebc2d3352"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "create-project",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2NhMWRiMWE0MjEwNTBkNmI3ZWJjNSIsInJvbGUiOiJNZW1iZXIiLCJpYXQiOjE3ODIzNTg1MDYsImV4cCI6MTc4MjM1OTQwNn0.MFym_i3Zuc2Xths0zeJkQdqP2VbwxPP9Xdus8vCS0O4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Web App API\",\r\n    \"description\": \"A scalable APIs\",\r\n    \"status\": \"Active\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost/projects",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "projects"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update-project",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2NhMWRiMWE0MjEwNTBkNmI3ZWJjNSIsInJvbGUiOiJNZW1iZXIiLCJpYXQiOjE3ODIzNTk0OTksImV4cCI6MTc4MjM2MDM5OX0.DsztKmRU53FXI_YHtxUUmyHgFNh7LKPJwfg_3GAdhs8",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"status\": \"Archived\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost/projects/6a3ca276040b96d39775b0f7",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "projects",
+                "6a3ca276040b96d39775b0f7"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete-project",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2M2ODQwNGM1OTBmZmViYzJkMzM1MCIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc4MjM0Mzc1MywiZXhwIjoxNzgyMzQ0NjUzfQ.-Ws1sNmtbIQvoUvPRwsGCumpps4G_AFyPQrAibg3174",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost/projects/6a3c68d29ca6be7859808a43",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "projects",
+                "6a3c68d29ca6be7859808a43"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Tasks",
+      "item": [
+        {
+          "name": "all-tasks",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2NhMWRiMWE0MjEwNTBkNmI3ZWJjNSIsInJvbGUiOiJNZW1iZXIiLCJpYXQiOjE3ODIzNTk0OTksImV4cCI6MTc4MjM2MDM5OX0.DsztKmRU53FXI_YHtxUUmyHgFNh7LKPJwfg_3GAdhs8",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost/tasks/project/6a3ca276040b96d39775b0f7",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "tasks",
+                "project",
+                "6a3ca276040b96d39775b0f7"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "all-tasks (Paginated)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2NhMWRiMWE0MjEwNTBkNmI3ZWJjNSIsInJvbGUiOiJNZW1iZXIiLCJpYXQiOjE3ODIzNTk0OTksImV4cCI6MTc4MjM2MDM5OX0.DsztKmRU53FXI_YHtxUUmyHgFNh7LKPJwfg_3GAdhs8",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost/tasks/project/6a3ca276040b96d39775b0f7?page=1&limit=1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "tasks",
+                "project",
+                "6a3ca276040b96d39775b0f7"
+              ],
+              "query": [
+                {
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "key": "limit",
+                  "value": "1"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "all-tasks (Sorted)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2NhMWRiMWE0MjEwNTBkNmI3ZWJjNSIsInJvbGUiOiJNZW1iZXIiLCJpYXQiOjE3ODIzNTk0OTksImV4cCI6MTc4MjM2MDM5OX0.DsztKmRU53FXI_YHtxUUmyHgFNh7LKPJwfg_3GAdhs8",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost/tasks/project/6a3ca276040b96d39775b0f7?sort=-createdAt",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "tasks",
+                "project",
+                "6a3ca276040b96d39775b0f7"
+              ],
+              "query": [
+                {
+                  "key": "sort",
+                  "value": "-createdAt"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "all-tasks (Filtered)",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2NhMWRiMWE0MjEwNTBkNmI3ZWJjNSIsInJvbGUiOiJNZW1iZXIiLCJpYXQiOjE3ODIzNjA0MjAsImV4cCI6MTc4MjM2MTMyMH0.DkOBeebQc7Ixp_xYNVYqwVFnSaJPV55Hj7oopyGyNLg",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost/tasks/project/6a3ca276040b96d39775b0f7?status=Done&priority=High",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "tasks",
+                "project",
+                "6a3ca276040b96d39775b0f7"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "Done"
+                },
+                {
+                  "key": "priority",
+                  "value": "High"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "one-task",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2M2ODQwNGM1OTBmZmViYzJkMzM1MCIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc4MjM0Mzc1MywiZXhwIjoxNzgyMzQ0NjUzfQ.-Ws1sNmtbIQvoUvPRwsGCumpps4G_AFyPQrAibg3174",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost/tasks/6a3c68404c590ffebc2d3355",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "tasks",
+                "6a3c68404c590ffebc2d3355"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "create-task",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2NhMWRiMWE0MjEwNTBkNmI3ZWJjNSIsInJvbGUiOiJNZW1iZXIiLCJpYXQiOjE3ODIzNTg1MDYsImV4cCI6MTc4MjM1OTQwNn0.MFym_i3Zuc2Xths0zeJkQdqP2VbwxPP9Xdus8vCS0O4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"title\": \"Sorting & Pagination\",\r\n    \"description\": \"applying pagination and sorting to all list endpoints\",\r\n    \"status\": \"In Progress\",\r\n    \"priority\": \"High\",\r\n    \"dueDate\": \"2026-06-28T23:29:04.476Z\",\r\n    \"project\": \"6a3ca276040b96d39775b0f7\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost/tasks",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "tasks"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update-task",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2NhMWRiMWE0MjEwNTBkNmI3ZWJjNSIsInJvbGUiOiJNZW1iZXIiLCJpYXQiOjE3ODIzNTk0OTksImV4cCI6MTc4MjM2MDM5OX0.DsztKmRU53FXI_YHtxUUmyHgFNh7LKPJwfg_3GAdhs8",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"status\": \"Done\",\r\n    \"priority\": \"High\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost/tasks/6a3ca2df040b96d39775b0f8",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "tasks",
+                "6a3ca2df040b96d39775b0f8"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "delete-task",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2M3MDVjYzE2ZWQ2N2NmMTQ5OTA1MCIsInJvbGUiOiJBZG1pbiIsImlhdCI6MTc4MjM0NTgzMywiZXhwIjoxNzgyMzQ2NzMzfQ.gkObTPmZ6lGZCZwJXIuHsas0nXH-p_oW3NmcEkUwLHc",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "http://localhost/tasks/6a3c705cc16ed67cf1499054",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "path": [
+                "tasks",
+                "6a3c705cc16ed67cf1499054"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "welcome-testing-API",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            ""
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "bearer_token_0c8f",
+      "secret": true
+    },
+    {
+      "key": "json_web_token_1c7x",
+      "secret": true
+    }
+  ]
+}
